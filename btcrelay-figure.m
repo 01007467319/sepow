@@ -1,0 +1,31 @@
+x = 0:25000:600000;
+y1 = btcrelay(2048);
+y2 = [0,0.375,0.373,0.38,0.368,0.377,0.373,0.374,0.375,0.376,0.372,0.374,0.378,0.378,0.373,0.374,0.374,0.375,0.372,0.374,0.379,0.378,0.377,0.374,0.374];
+[AX,H1,H2] = plotyy(x,y1,x,y2,'plot');
+grid on;
+%grid minor;
+set(gca,'ygrid','on');
+set(AX(1),'ylim',[0,50],'ytick',[0:5:50]);%[59.00,59.50,60.00,60.50,61.00]);%左轴范围
+set(AX(2),'ylim',[0,1],'ytick',[0:0.1:1],'FontSize',10.5); 
+set(AX(1),'xlim',[0,600000]);
+set(AX(2),'xlim',[0,600000]);
+%axis([0,600])  
+set(AX(1),'XColor','k','YColor','b','LineWidth',2);
+set(AX(2),'XColor','k','YColor','r','LineWidth',2);
+HH1=get(AX(1),'Ylabel');
+set(HH1,'String','BTCRelay proof size (GB)');
+set(HH1,'color','b');
+HH2=get(AX(2),'Ylabel');
+set(HH2,'String','SEPoW proof size (KB)','FontSize',15);
+set(HH2,'color','r');
+set(H1,'LineStyle','-','LineWidth',2);
+set(H1,'Marker','*','MarkerSize',4.5);
+set(H1,'color','b');
+set(gca,'FontSize',15);
+set(H2,'LineStyle','-','LineWidth',2);
+set(H2,'Marker','o','MarkerSize',5);
+set(H2,'color','r');
+set(gca,'FontSize',15);
+%legend([H1,H2],{'y1 = 200*exp(-0.05*x).*sin(x)';'y2 = 0.8*exp(-0.5*x).*sin(10*x)'});
+legend('BTCRelay','SEPoW','location','northwest');   
+xlabel('Blockchain length (n)');
